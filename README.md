@@ -1,4 +1,4 @@
-# Love-Cats-Website
+# Cats-Website
 Domaci rad - programiranje za internet
 
 Web stranica: 
