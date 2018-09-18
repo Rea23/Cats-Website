@@ -5,12 +5,21 @@ document.addEventListener("DOMContentLoaded", () => {
     function Add_Article() {
         var picture_url;
         var article_heading;
-        picture_url = window.prompt("Unesite url slike:", "");
+        //picture_url = window.prompt("Unesite url slike:", "");
         article_heading = window.prompt("Unesite naslov clanka:", "");
     
         //add new article to main column
         var element_article = document.getElementsByClassName("article-container")[0];
         var clone_article = element_article.cloneNode(true);
+
+        //set heading value to input value
+        var element_article_heading = clone_article.getElementsByTagName('h3')[0];
+        element_article_heading.textContent = article_heading;
+
+        //set picture uri to input value
+        //var element_article_picture = clone_article.getElementsByTagName('img')[0].getAttribute('src');
+        //element_article_picture = picture_url;
+        
         document.getElementById("main-column").appendChild(clone_article);
 
         //add new comment button to main column
