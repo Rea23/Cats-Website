@@ -57,18 +57,25 @@ document.addEventListener("DOMContentLoaded", () => {
         comment_person = window.prompt("Unesite svoje ime:", "");
         comment_content = window.prompt("Unesite svoj komentar:", ""); 
 
-        //add new comment into comment section
-        var element_comment_person = document.getElementsByTagName("p")[0];
-        var clone_comment_person = element_comment_person.cloneNode(true);
-        var element_comment_content = document.getElementsByTagName("p")[1];
-        var clone_comment_content = element_comment_content.cloneNode(true);
+        if (comment_person != "" && comment_content != "")
+        {
+            //add new comment into comment section
+            var element_comment_person = document.getElementsByTagName("p")[0];
+            var clone_comment_person = element_comment_person.cloneNode(true);
+            var element_comment_content = document.getElementsByTagName("p")[1];
+            var clone_comment_content = element_comment_content.cloneNode(true);
+            var element_divider = document.getElementsByClassName("divider")[0];
+            var clone_divider = element_divider.cloneNode(true);
 
-        //set heading value to input value
-        clone_comment_person.textContent = comment_person;
-        clone_comment_content.textContent = comment_content;
+            //set heading value to input value
+            clone_comment_person.textContent = comment_person + ": ";
+            clone_comment_content.textContent = comment_content;
 
-        document.getElementById("comments-section").appendChild(clone_comment_person);
-        document.getElementById("comments-section").appendChild(clone_comment_content);
+            document.getElementById("comments-section").appendChild(clone_divider);
+            document.getElementById("comments-section").appendChild(clone_comment_person);
+            document.getElementById("comments-section").appendChild(clone_comment_content);
+        }
+        
     }
 
     document.getElementById("links-section-add-button").onclick = function() {Add_Link()};
