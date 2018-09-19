@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function Add_Article() {
         var picture_url;
         var article_heading;
-        //picture_url = window.prompt("Unesite url slike:", "");
+        picture_url = window.prompt("Unesite url slike:", "");
         article_heading = window.prompt("Unesite naslov clanka:", "");
     
         //add new article to main column
@@ -16,9 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
         var element_article_heading = clone_article.getElementsByTagName('h3')[0];
         element_article_heading.textContent = article_heading;
 
-        //set picture uri to input value
-        //var element_article_picture = clone_article.getElementsByTagName('img')[0].getAttribute('src');
-        //element_article_picture = picture_url;
+        //set picture url to input value
+        clone_article.getElementsByTagName('img')[0].getAttributeNode('src').value = picture_url;
         
         document.getElementById("main-column").appendChild(clone_article);
 
@@ -67,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
             var element_divider = document.getElementsByClassName("divider")[0];
             var clone_divider = element_divider.cloneNode(true);
 
-            //set heading value to input value
+            //set comment value to input value
             clone_comment_person.textContent = comment_person + ": ";
             clone_comment_content.textContent = comment_content;
 
@@ -89,7 +88,14 @@ document.addEventListener("DOMContentLoaded", () => {
         //add link into links section
         var element_link_name = document.getElementsByClassName("links-section-link")[0];
         var clone_link = element_link_name.cloneNode(true);
+        var element_divider = document.getElementsByClassName("divider")[0];
+        var clone_divider = element_divider.cloneNode(true);
 
+        //set link value to input value
+        clone_link.querySelector("a").textContent = link_name;
+        clone_link.querySelector("a").getAttributeNode("href").value = link_url;
+
+        document.getElementById("links-section").appendChild(clone_divider);
         document.getElementById("links-section").appendChild(clone_link);
     }
 
