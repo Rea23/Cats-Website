@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
         picture_url = window.prompt("Unesite url slike:", "");
         article_heading = window.prompt("Unesite naslov clanka:", "");
     
-        if(article_heading != "")
+        if (article_heading != "")
         {
             //add new article to main column
             var element_article = document.getElementsByClassName("article-container")[0];
@@ -28,24 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
             var clone_commentBtn = element_commentBtn.cloneNode(true);
             document.getElementById("main-column").appendChild(clone_commentBtn);
         } 
-    }
-
-    const deleteBtns = document.querySelectorAll(".article-container > .main-column-delete-button");
-    for (const deleteBtn of deleteBtns) {
-        deleteBtn.addEventListener("click", Delete_Article);
-    }
-
-    function Delete_Article(e) {
-        const deleteBtn = e.currentTarget;
-        const article = deleteBtn.parentElement;
-        const article_title = article.querySelector("h3");
-
-        //delete article and comment button if confirmed
-        if (confirm("Sigurno zelite izbrisati: " + article_title.textContent)) {
-            const commentBtn = article.nextElementSibling;
-            commentBtn.remove();
-            article.remove();
-        }
     }
 
     const commentBtns = document.querySelectorAll(".comment-article-button");
@@ -104,6 +86,24 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("links-section").appendChild(clone_link);
         }
 
+    }
+
+    const deleteBtns = document.querySelectorAll(".article-container > .main-column-delete-button");
+    for (const deleteBtn of deleteBtns) {
+        deleteBtn.addEventListener("click", Delete_Article);
+    }
+
+    function Delete_Article(e) {
+        const deleteBtn = e.currentTarget;
+        const article = deleteBtn.parentElement;
+        const article_title = article.querySelector("h3");
+
+        //delete article and comment button if confirmed
+        if (confirm("Sigurno zelite izbrisati: " + article_title.textContent)) {
+            const commentBtn = article.nextElementSibling;
+            commentBtn.remove();
+            article.remove();
+        }
     }
 
 });
